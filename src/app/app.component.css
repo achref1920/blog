@@ -1,0 +1,14 @@
+/* app.component.css */
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.btn {
+    margin-right: 5px;
+}

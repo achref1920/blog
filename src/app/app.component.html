@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="my-4">Blog</h1>
+
+  <input class="form-control mb-3" placeholder="Search articles..." [(ngModel)]="searchText" />
+
+  <button class="btn btn-primary mb-4" (click)="toggleForm()">Add Article</button>
+
+  <div *ngIf="showForm" class="card p-3 mb-4">
+    <h3>Add New Article</h3>
+    <input class="form-control mb-2" placeholder="Title" [(ngModel)]="newArticle.title" />
+    <input class="form-control mb-2" placeholder="Photo URL" [(ngModel)]="newArticle.photo" />
+    <textarea class="form-control mb-2" placeholder="Description" [(ngModel)]="newArticle.description"></textarea>
+    <button class="btn btn-success" (click)="addArticle()">Submit</button>
+  </div>
+
+  <div *ngFor="let article of articles | filter: searchText" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.title }}</h5>
+      <p class="card-text">{{ article.description }}</p>
+      <img [src]="article.photo" alt="{{ article.title }}" class="img-fluid mb-2" *ngIf="article.photo" />
+      <p>Published on: {{ article.date | date:'mediumDate' }}</p>
+      <p>Score: {{ article.score }}</p>
+      <button class="btn btn-success" (click)="vote(article, 'up')">Up</button>
+      <button class="btn btn-danger" (click)="vote(article, 'down')">Down</button>
+    </div>
+  </div>
+</div>
